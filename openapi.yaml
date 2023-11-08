@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: CO2 Saving API
+  description: API for managing CO2 emissions saving and house efficiency upgrade interventions.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /saving:
+    get:
+      summary: Get CO2 Saving
+      responses:
+        '200':
+          description: Successful response containing CO2 saving data
+          content:
+            application/json:
+              example:
+                day: 100
+                week: 700
+                month: 3000
+                year: 12000
+        '503':
+          description: Service unavailable, intervention could not be added
+          content:
+            application/json:
+              example:
+                error: Service unavailable, please try again later
+    servers:
+      - url: http://localhost:8080
+  /intervention:
+    post:
+      summary: Add Intervention
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  example: "550e8400-e29b-41d4-a716-446655440000"
+                date:
+                  type: string
+                  format: date-time
+                  example: "2023-11-08T12:00:00Z"
+      responses:
+        '204':
+          description: No content, intervention added successfully
+        '400':
+          description: Bad request, invalid input data
+          content:
+            application/json:
+              example:
+                error: Invalid input data
+        '503':
+          description: Service unavailable, unable to fetch CO2 saving data
+          content:
+            application/json:
+              example:
+                error: Service unavailable, please try again later
+    servers:
+      - url: http://localhost:8080

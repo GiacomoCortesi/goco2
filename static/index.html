@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ . }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .dashboard {
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>CO2 Saved</h1>
+        <div class="col-md-3">
+            <div class="widget">
+                <h2>Today</h2>
+                <div id="daySaving"></div>
+            </div>
+            <div class="widget">
+                <h2>This Week</h2>
+                <div id="weekSaving"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget">
+                <h2>This Month</h2>
+                <div id="monthSaving"></div>
+            </div>
+            <div class="widget">
+                <h2>This Year</h2>
+                <div id="yearSaving"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Add Intervention</h2>
+            <div class="form-group">
+                <label for="idInput">ID:</label>
+                <input type="text" class="form-control" id="idInput" placeholder="UUID Format - 1f1f4633-d1d9-4d61-b717-243947dcbc6c">
+            </div>
+            <div class="form-group">
+                <label for="dateInput">Date:</label>
+                <input type="text" class="form-control" id="dateInput" placeholder="RFC3339 Format - 2023-11-11T13:12:06Z">
+            </div>
+            <button class="btn btn-primary" onclick="addIntervention()">Add Intervention</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/script.js"></script>
+</body>
+</html>
